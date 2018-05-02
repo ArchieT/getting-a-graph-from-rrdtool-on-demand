@@ -65,10 +65,10 @@ func Graph(params Parameters, defs []Def) (rrd.GraphInfo, []byte, error) {
 	a.SetSize(params.Width, params.Height)
 	a.SetTitle(params.Title)
 	a.SetVLabel(params.VLabel)
-	if len(defs)==0 {
+	if len(defs) == 0 {
 		panic("defs is empty")
 	} else {
-		log.Println("defs:",defs)
+		log.Println("defs:", defs)
 	}
 	for _, d := range defs {
 		any := false
@@ -102,17 +102,17 @@ func Graph(params Parameters, defs []Def) (rrd.GraphInfo, []byte, error) {
 		}
 	}
 	log.Println(a)
-	return a.Graph(params.Start,params.End)
+	return a.Graph(params.Start, params.End)
 }
 
 func StringOfLowerLetters(s string) bool {
 	cha := map[int32]bool{
-		'a':true, 'b':true, 'c':true, 'd':true, 'e':true, 'f':true, 'g':true,
-		'h':true, 'i':true, 'j':true, 'k':true, 'l':true, 'm':true, 'n':true,
-		'o':true, 'p':true, 'q':true, 'r':true, 's':true, 't':true, 'u':true,
-		'v':true, 'w':true, 'x':true, 'y':true, 'z':true,
+		'a': true, 'b': true, 'c': true, 'd': true, 'e': true, 'f': true, 'g': true,
+		'h': true, 'i': true, 'j': true, 'k': true, 'l': true, 'm': true, 'n': true,
+		'o': true, 'p': true, 'q': true, 'r': true, 's': true, 't': true, 'u': true,
+		'v': true, 'w': true, 'x': true, 'y': true, 'z': true,
 	}
-	for _,c := range s {
+	for _, c := range s {
 		if !cha[c] {
 			return false
 		}
@@ -124,15 +124,15 @@ func ParsingLineArg(s string) (string, string, LineDef, bool) {
 	var d LineDef
 	fmt.Sscanf(s[:len("LINE1:")], "LINE%01d:", &(d.Width))
 	w := s[len("LINE1:"):]
-	if len(w)<8 {
-		panic("dlugoscwmniejnizosiema"+w+"qwerastringbyl"+s+"uiop")
+	if len(w) < 8 {
+		panic("dlugoscwmniejnizosiema" + w + "qwerastringbyl" + s + "uiop")
 	}
 	fmt.Sscanf(w[len(w)-7:], "C%02x%02x%02x", &(d.Red), &(d.Green), &(d.Blue))
 	w = w[:len(w)-7]
 	var i byte = 0
 	var a byte = 0
-	if len(w)<3 {
-		panic("dlugoscwmniejniztrzya"+w+"qwerastringbyl"+s+"uiop")
+	if len(w) < 3 {
+		panic("dlugoscwmniejniztrzya" + w + "qwerastringbyl" + s + "uiop")
 	}
 	if w[len(w)-2] == 'a' {
 		switch w[len(w)-1] {
@@ -237,7 +237,7 @@ func main() {
 					thePath = append(thePath, pael)
 				}
 			}
-			if len(thePath)>0 && thePath[0] == "deliver" {
+			if len(thePath) > 0 && thePath[0] == "deliver" {
 				timely := strings.Split(thePath[1], "_")
 				secondss := timely[0]
 				steppp := "nostep"
@@ -264,7 +264,7 @@ func main() {
 				for _, wha := range whats {
 					n, t, d, g := ParsingLineArg(wha)
 					if files[n] == "" || !g {
-						panic("thishandlefunclksagfdsaglkhnjest"+n+"ggg"+fmt.Sprint(g)+"afilessa"+fmt.Sprint(files)+"otakiesa")
+						panic("thishandlefunclksagfdsaglkhnjest" + n + "ggg" + fmt.Sprint(g) + "afilessa" + fmt.Sprint(files) + "otakiesa")
 					}
 					ou = append(ou, DefProto{n, t, d})
 				}
@@ -274,7 +274,9 @@ func main() {
 						time.Now(),
 						wid, hei,
 						ste,
-						"Temperatura z ostatnich " + secondss + "s step:" + steppp,
+						"Temperatura z ostatnich " +
+							(time.Duration(int64(secs)) * time.Second).String() +
+							"s step:" + steppp,
 						"Temperatura w °C",
 					}, mergeProto(ou, files))
 				w.Write(b)
