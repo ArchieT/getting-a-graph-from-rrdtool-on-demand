@@ -173,6 +173,7 @@ func ParsingLineArg(s string) (string, string, LineDef, bool) {
 }
 
 func mergeProto(ps []DefProto, files map[string]string) (ou []Def) {
+	log.Println(ps)
 	ou = make([]Def, 0, 3)
 	for _, p := range ps {
 		var found *DefParameters = nil
