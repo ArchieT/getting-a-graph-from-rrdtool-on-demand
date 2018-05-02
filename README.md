@@ -32,3 +32,5 @@ WantedBy=multi-user.target
 ```
 
 The code is really bad, so I licensed it with BSD2. But if you make any improvements to it, please share them. Even if you feel that they are even worse. And don't forget to give it a star if you somehow found it useful (because I don't expect anyone to).
+
+This program uses github.com/ziutek/rrd library (https://godoc.org/github.com/ziutek/rrd#Grapher)
