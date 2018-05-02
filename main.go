@@ -105,7 +105,7 @@ func StringOfLowerLetters(s string) bool {
 func ParsingLineArg(s string) (string, string, LineDef, bool) {
 	var d LineDef
 	var w string
-	fmt.Sscanf(s, "LINE%2d:%s#%02x%02x%02x", &(d.Width), w, &(d.Red), &(d.Green), &(d.Blue))
+	fmt.Sscanf(s, "LINE%2d:%sC%02x%02x%02x", &(d.Width), w, &(d.Red), &(d.Green), &(d.Blue))
 	var i byte = 0
 	var a byte = 0
 	if len(w)<3 {
@@ -260,7 +260,7 @@ func main() {
 				}
 			} else {
 				fmt.Fprintln(w,
-					"<a href=\"deliver/360000_900/1000/420/LINE2:tempa#000000\">aaa</a>")
+					"<a href=\"deliver/360000_900/1000/420/LINE2:tempaC000000\">aaa</a>")
 			}
 		})
 	log.Fatal(http.ListenAndServe(":8085", nil))
