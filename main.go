@@ -63,25 +63,34 @@ func Graph(params Parameters, defs []Def) (rrd.GraphInfo, []byte, error) {
 	a.SetTitle(params.Title)
 	a.SetVLabel(params.VLabel)
 	for _, d := range defs {
+		any := false
 		if d.Params.Average.Yes() {
 			a.Def(d.Params.Name+"a", d.RRDFile, d.Params.Name, "AVERAGE")
 			a.Line(float32(d.Params.Average.Width), d.Params.Name+"a", d.Params.Average.Color())
+			any = true
 		}
 		if d.Params.Min.Yes() {
 			a.Def(d.Params.Name+"i", d.RRDFile, d.Params.Name, "MIN")
 			a.Line(float32(d.Params.Min.Width), d.Params.Name+"i", d.Params.Min.Color())
+			any = true
 		}
 		if d.Params.AverageMin.Yes() {
 			a.Def(d.Params.Name+"ai", d.RRDFile, d.Params.Name, "AVERAGE", "reduce=MIN")
 			a.Line(float32(d.Params.AverageMin.Width), d.Params.Name+"ai", d.Params.AverageMin.Color())
+			any = true
 		}
 		if d.Params.AverageMax.Yes() {
 			a.Def(d.Params.Name+"ax", d.RRDFile, d.Params.Name, "AVERAGE", "reduce=MAX")
 			a.Line(float32(d.Params.AverageMax.Width), d.Params.Name+"ax", d.Params.AverageMax.Color())
+			any = true
 		}
 		if d.Params.Max.Yes() {
 			a.Def(d.Params.Name+"x", d.RRDFile, d.Params.Name, "MAX")
 			a.Line(float32(d.Params.Max.Width), d.Params.Name+"x", d.Params.Max.Color())
+			any = true
+		}
+		if !any {
+			panic(d)
 		}
 	}
 	if params.Step != 0 {
