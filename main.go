@@ -91,13 +91,13 @@ func Graph(params Parameters, defs []Def) (rrd.GraphInfo, []byte, error) {
 }
 
 func StringOfLowerLetters(s string) bool {
-	cha := map[int]bool{
+	cha := map[int32]bool{
 		'a':true, 'b':true, 'c':true, 'd':true, 'e':true, 'f':true, 'g':true,
 		'h':true, 'i':true, 'j':true, 'k':true, 'l':true, 'm':true, 'n':true,
 		'o':true, 'p':true, 'q':true, 'r':true, 's':true, 't':true, 'u':true,
 		'v':true, 'w':true, 'x':true, 'y':true, 'z':true,
 	}
-	for c := range s {
+	for _,c := range s {
 		if !cha[c] {
 			return false
 		}
