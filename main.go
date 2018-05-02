@@ -62,6 +62,9 @@ func Graph(params Parameters, defs []Def) (rrd.GraphInfo, []byte, error) {
 	a.SetSize(params.Width, params.Height)
 	a.SetTitle(params.Title)
 	a.SetVLabel(params.VLabel)
+	if len(defs)==0 {
+		panic("defs is empty")
+	}
 	for _, d := range defs {
 		any := false
 		if d.Params.Average.Yes() {
