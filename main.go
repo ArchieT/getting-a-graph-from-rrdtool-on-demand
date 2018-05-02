@@ -108,6 +108,9 @@ func ParsingLineArg(s string) (string, string, LineDef, bool) {
 	fmt.Sscanf(s, "LINE%2d:%s#%02x%02x%02x", &(d.Width), w, &(d.Red), &(d.Green), &(d.Blue))
 	var i byte = 0
 	var a byte = 0
+	if len(w)<3 {
+		panic("dlugoscwmniejniztrzya"+w+"qwer")
+	}
 	if w[len(w)-2] == 'a' {
 		switch w[len(w)-1] {
 		case 'x':
