@@ -246,7 +246,7 @@ func main() {
 				for _, wha := range whats {
 					n, t, d, g := ParsingLineArg(wha)
 					if files[n] == "" || !g {
-						panic("thishandlefunclksagfdsaglkh")
+						panic("thishandlefunclksagfdsaglkhnjest"+n+"afilessa"+fmt.Sprint(files)+"otakiesa")
 					}
 					ou = append(ou, DefProto{n, t, d})
 				}
