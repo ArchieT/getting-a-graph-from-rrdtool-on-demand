@@ -106,6 +106,9 @@ func ParsingLineArg(s string) (string, string, LineDef, bool) {
 	var d LineDef
 	var w string
 	fmt.Sscanf(s, "LINE%2d:%s", &(d.Width), w)
+	if len(w)<8 {
+		panic("dlugoscwmniejnizosiema"+w+"qwerastringbyl"+s+"uiop")
+	}
 	fmt.Sscanf(w[len(w)-7:], "C%02x%02x%02x", &(d.Red), &(d.Green), &(d.Blue))
 	w = w[:len(w)-7]
 	var i byte = 0
