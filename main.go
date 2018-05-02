@@ -200,15 +200,15 @@ func mergeProto(ps []DefProto, files map[string]string) (ou []Def) {
 		}
 		switch p.Type {
 		case "a":
-			found.Average = p.LineDef
+			(*found).Average = p.LineDef
 		case "ax":
-			found.AverageMax = p.LineDef
+			(*found).AverageMax = p.LineDef
 		case "ai":
-			found.AverageMin = p.LineDef
+			(*found).AverageMin = p.LineDef
 		case "i":
-			found.Min = p.LineDef
+			(*found).Min = p.LineDef
 		case "x":
-			found.Max = p.LineDef
+			(*found).Max = p.LineDef
 		default:
 			panic("panicbotencasetuw185lkjfdsgdsgyyy" + p.Type + "ppp")
 		}
