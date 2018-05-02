@@ -211,7 +211,7 @@ func main() {
 					thePath = append(thePath, pael)
 				}
 			}
-			if thePath[0] == "deliver" {
+			if len(thePath)>0 && thePath[0] == "deliver" {
 				timely := strings.Split(thePath[1], "_")
 				secondss := timely[0]
 				steppp := "nostep"
