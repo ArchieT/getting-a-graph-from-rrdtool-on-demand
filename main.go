@@ -26,7 +26,7 @@ type LineDef struct {
 }
 
 func (l *LineDef) Color() string {
-	return fmt.Sprintf("#%02x%02x%02x", l.Red, l.Green, l.Blue)
+	return fmt.Sprintf("%02x%02x%02x", l.Red, l.Green, l.Blue)
 }
 
 func (l *LineDef) No() bool {
@@ -59,6 +59,9 @@ type DefProto struct {
 
 func Graph(params Parameters, defs []Def) (rrd.GraphInfo, []byte, error) {
 	a := rrd.NewGrapher()
+	if params.Step != 0 {
+		a.AddOptions("-S " + fmt.Sprint(params.Step))
+	}
 	a.SetSize(params.Width, params.Height)
 	a.SetTitle(params.Title)
 	a.SetVLabel(params.VLabel)
@@ -97,9 +100,6 @@ func Graph(params Parameters, defs []Def) (rrd.GraphInfo, []byte, error) {
 		if !any {
 			panic(d)
 		}
-	}
-	if params.Step != 0 {
-		a.AddOptions("-S " + fmt.Sprint(params.Step))
 	}
 	log.Println(a)
 	return a.Graph(params.Start,params.End)
