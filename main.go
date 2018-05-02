@@ -255,7 +255,7 @@ func main() {
 				}
 				_, b, e := Graph(
 					Parameters{
-						time.Now().Add(time.Duration(-secs) * time.Second),
+						time.Now().Add(time.Duration(-int64(secs)) * time.Second),
 						time.Now(),
 						wid, hei,
 						ste,
