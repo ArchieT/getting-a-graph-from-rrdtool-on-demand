@@ -64,6 +64,8 @@ func Graph(params Parameters, defs []Def) (rrd.GraphInfo, []byte, error) {
 	a.SetVLabel(params.VLabel)
 	if len(defs)==0 {
 		panic("defs is empty")
+	} else {
+		log.Println("defs:",defs)
 	}
 	for _, d := range defs {
 		any := false
