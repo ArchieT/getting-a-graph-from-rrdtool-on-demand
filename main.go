@@ -264,7 +264,7 @@ func main() {
 					}, mergeProto(ou, files))
 				w.Write(b)
 				if e != nil {
-					panic("tutajpanicaaaaaa256aaaa")
+					panic(e)
 				}
 			} else {
 				fmt.Fprintln(w,
