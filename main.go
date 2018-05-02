@@ -109,7 +109,7 @@ func ParsingLineArg(s string) (string, string, LineDef, bool) {
 	var i byte = 0
 	var a byte = 0
 	if len(w)<3 {
-		panic("dlugoscwmniejniztrzya"+w+"qwer")
+		panic("dlugoscwmniejniztrzya"+w+"qwerastringbyl"+s+"uiop")
 	}
 	if w[len(w)-2] == 'a' {
 		switch w[len(w)-1] {
