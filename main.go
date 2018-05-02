@@ -101,6 +101,7 @@ func Graph(params Parameters, defs []Def) (rrd.GraphInfo, []byte, error) {
 	if params.Step != 0 {
 		a.AddOptions("-S " + fmt.Sprint(params.Step))
 	}
+	log.Println(a)
 	return a.Graph(params.Start,params.End)
 }
 
