@@ -177,9 +177,9 @@ func mergeProto(ps []DefProto, files map[string]string) (ou []Def) {
 	ou = make([]Def, 0, 3)
 	for _, p := range ps {
 		var found *DefParameters = nil
-		for _, o := range ou {
+		for i, o := range ou {
 			if o.RRDFile == files[p.Name] {
-				found = &(o.Params)
+				found = &(ou[i].Params)
 				break
 			}
 		}
