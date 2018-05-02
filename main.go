@@ -104,8 +104,8 @@ func StringOfLowerLetters(s string) bool {
 
 func ParsingLineArg(s string) (string, string, LineDef, bool) {
 	var d LineDef
-	var w string
-	fmt.Sscanf(s, "LINE%01d:%s", &(d.Width), w)
+	fmt.Sscanf(s[:len("LINE1:")], "LINE%01d:", &(d.Width))
+	w := s[len("LINE1:"):]
 	if len(w)<8 {
 		panic("dlugoscwmniejnizosiema"+w+"qwerastringbyl"+s+"uiop")
 	}
