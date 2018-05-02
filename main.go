@@ -276,7 +276,7 @@ func main() {
 						ste,
 						"Temperatura z ostatnich " +
 							(time.Duration(int64(secs)) * time.Second).String() +
-							"s step:" + steppp,
+							" step:" + steppp,
 						"Temperatura w °C",
 					}, mergeProto(ou, files))
 				w.Write(b)
