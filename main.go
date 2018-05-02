@@ -105,7 +105,9 @@ func StringOfLowerLetters(s string) bool {
 func ParsingLineArg(s string) (string, string, LineDef, bool) {
 	var d LineDef
 	var w string
-	fmt.Sscanf(s, "LINE%2d:%sC%02x%02x%02x", &(d.Width), w, &(d.Red), &(d.Green), &(d.Blue))
+	fmt.Sscanf(s, "LINE%2d:%s", &(d.Width), w)
+	fmt.Sscanf(w[len(w)-7:], "C%02x%02x%02x", &(d.Red), &(d.Green), &(d.Blue))
+	w = w[:len(w)-7]
 	var i byte = 0
 	var a byte = 0
 	if len(w)<3 {
